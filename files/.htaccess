@@ -1,0 +1,21 @@
+# blocheaza accesul la fisierul htaccess
+
+<Files .htaccess>
+
+order allow,deny
+
+deny from all
+
+</Files>
+
+
+
+# blocheaza executarea anumitor fisiere
+
+RemoveType .pl .cgi .php .php3 .php4 .php5 .xml .phtml .phtm .html .htm .wml .shtm .shtml .asp
+
+RemoveHandler .pl .cgi .php .php3 .php4 .php5 .xml .phtml .phtm .html .htm .wml .shtm .shtml .asp
+
+#php_flag engine off
+
+Options -Indexes

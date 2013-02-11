@@ -1,0 +1,9 @@
+# Master Autoindex
+# 2012 master-land.net
+# ionutvmi@gmail.com
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^data/([0-9]+)/(.*).html$ index.php?dir=$1 [QSA,L]
+RewriteRule ^data/file/([0-9]+)/(.*).html$ file.php?id=$1 [QSA,L]
+
+</IfModule>

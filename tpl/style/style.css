@@ -1,0 +1,169 @@
+body {
+color : #545454;
+font-size : 15px;
+font-family : Times;
+background-image : url(images/body.gif);
+background-attachment : fixed;
+max-width : 600px;
+margin : auto;
+}
+a:link, a:active, a:visited {
+color : #1f8ba0;
+text-decoration : none;
+}
+a:hover, a:focus {
+text-decoration : underline;
+}
+div {
+background-color : #fff;
+margin : 1px;
+padding : 2px;
+}
+hr {
+margin : 0;
+border-color : #f0f0f0 #fff #fff;
+border-style : solid;
+border-width : 1px;
+}
+.header {
+color : #fff;
+padding:5px;
+font-weight:bold;
+font-size: 20px;
+background-color : #93db2e;
+background-image : url(images/header.gif);
+background-repeat : no-repeat;
+background-position : right 50%;
+}
+.lastnews {
+background-image : url(images/content.gif);
+background-repeat : repeat-x;
+background-position : 50% top;
+border : 1px solid #ececec;
+}
+.links {
+background-image : url(images/content.gif);
+background-repeat : repeat-x;
+background-position : 50% top;
+border : 1px solid #ececec;
+}
+.title {
+background-color : #e5eff0;
+background-image : url(images/title.gif);
+background-repeat : repeat-x;
+background-position : 50% bottom;
+border : 1px solid #dbe5e6;
+padding:3px;
+text-align:center;
+}
+
+.title2 {
+background-color : #eef8e0;
+background-image : url(images/title2.gif);
+background-repeat : repeat-x;
+background-position : 50% bottom;
+border : 1px solid #e1ecd1;
+padding:3px;
+text-align:center;
+}
+.content {
+background-image : url(images/content.gif);
+background-repeat : repeat-x;
+background-position : 50% top;
+border : 1px solid #ececec;
+padding:3px;
+}
+.content2 {
+background-image : url(images/content.gif);
+background-repeat : repeat-x;
+background-position : 50% top;
+border : 1px solid #dcdcdc;
+padding:3px;
+}
+.content2 a:link, .content2 a:visited {
+color : #62931d;
+}
+.footer {
+color : #fff;
+background-color : #32b6ce;
+background-image : url(images/footer.gif);
+background-repeat : no-repeat;
+background-position : right 50%;
+text-align:center;
+padding:3px;
+}
+.footer a{
+color:white;
+}
+.vs {
+text-align : center;
+}
+span {
+color : #96dc2c;
+}
+.zag {
+font-size : large;
+}
+.green {
+color:green;
+}
+.red {
+color:red;
+}
+
+.download {
+text-align:center;
+background-color:#d4d4d4;
+-webkit-border-radius: 0.3em;
+border-radius: 0.3em;
+padding: 3px;
+background-image: url("images/grey1.png");
+background-repeat:repeat-x;
+border:1px solid #4483E2;
+}
+.pages {
+text-align:center;
+-webkit-border-radius: 0.3em;
+border-radius: 0.3em;
+padding: 3px;
+background-image: url("images/grey1.png");
+}
+.submit {
+text-align:center;
+-webkit-border-radius: 0.3em;
+border-radius: 0.3em;
+padding: 3px;
+background-image: url("images/grey1.png");
+}
+.sort {
+text-align:center;
+-webkit-border-radius: 0.3em;
+border-radius: 0.3em;
+padding: 3px;
+background-image: url("images/grey1.png");
+}
+.icon {
+text-align:center;
+-webkit-border-radius: 0.3em;
+border: 1px solid #ccc;
+padding: 3px;
+background-image:url(images/content.gif);
+background-repeat : repeat-x;
+}
+.search {
+text-align:center;
+-webkit-border-radius: 0.3em;
+border: 1px solid #ccc;
+padding: 3px;
+background-image:url(images/content.gif);
+background-repeat : repeat-x;
+}
+.new {
+color:red;
+}
+img {
+vertical-align:center;
+
+}
+/* Style by Mad
+http://wapdiz.ru */

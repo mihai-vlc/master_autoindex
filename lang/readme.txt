@@ -1,0 +1,1 @@
+If you translate it please send it to ionutvmi@gmail.com

@@ -1,0 +1,25 @@
+V 1.0.5 - 11 Feb 2013
+- fixed php 5.4 object bug
+- if the admin message is blank nothing is shown in the index page
+- pagination in plugin manager added
+- new hooks on index page
+----------------------
+V 1.0.4 - 16 Oct 2012
+- magic quote bug fixed 
+- added description option in edit menu
+
+----------------------
+V 1.0.2 - 28 Sep 2012
+- preview bug fixed
+- added protection against shell files
+
+----------------------
+V 1.0.1 - 26 Sep 2012
+- important bugs fixed
+- option to move files/dir added
+
+* new plugins - http://master-land.net/f/37/plugins.html
+----------------------
+V 1.0 BETA - 22 Sep 2012 - Initial Relese
+* plugins - http://master-land.net/f/37/plugins.html
+* bugs - http://master-land.net/f/38/bugs.html

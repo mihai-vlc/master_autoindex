@@ -1,0 +1,87 @@
+/inc/init.php
+	init
+/header.php
+	header_top
+	header
+	header_end
+/footer.php
+	footer_top
+	footer
+	footer_end
+/icon.php
+	icon_top
+	icon
+	icon_end
+/index.php
+	index_top
+	index_updates
+	index_admin
+	index_search
+	index_order
+	index_folders
+	index_folders_end
+	index_files_top
+	index_files
+	index_files_end
+	index
+	index_end
+/request.php
+	request_top
+	request_ins
+	request_rpl
+	request_del
+	request
+	request_end
+/functions.php
+	mai_img
+/admincp/index.php
+	admin_end
+	admin_top
+	admin_pass
+	admin_options
+/admincp/upload.php
+	admin_upload_form_top
+	admin_upload_form_post
+	admin_upload_form_jad_top
+	admin_upload_form_jad
+	admin_upload_form_mid_top
+	admin_upload_form_mid
+	admin_upload_form
+	admin_upload_form_end
+/admincp/import.php
+	admin_import_form_top
+	admin_import_form_jad
+	admin_import_form_mid
+	admin_import_form_jad_top
+	admin_import_form_mid_top
+	admin_upload_form_mid
+	admin_import_form
+	admin_import_form_post
+	admin_import_form_end
+/admincp/actions.php
+	admin_actions_top
+	admin_actions_add
+	admin_actions_add_top
+	admin_actions_add_end
+	admin_actions_edit_top
+	admin_actions_edit
+	admin_actions_editset_top
+	admin_actions_editset
+	admin_actions_editset_end
+	admin_actions_delete_top
+	admin_actions_delete_a
+	admin_actions_delete_b
+	admin_actions_delete_end
+	admin_actions
+	admin_actions_end
+/file.php
+	file_top
+	file_mid
+	file
+	download
+	file_end
+/usr_set.php
+	usr_set_top
+	usr_set
+	usr_set_end
+	
