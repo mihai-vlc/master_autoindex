@@ -108,7 +108,7 @@ if($total_results > 0) {
 		
 	$plugins->run_hook("index_order");
 	
-	$data = $db->select("SELECT * FROM `". MAI_PREFIX ."files` WHERE $where_text ORDER BY $order LIMIT $start,$perpage");
+	$data = $db->select("SELECT * FROM `". MAI_PREFIX ."files` WHERE $where_text ORDER BY `isdir` DESC, $order LIMIT $start,$perpage");
 
 
 	foreach($data as $d){
@@ -118,7 +118,12 @@ if($total_results > 0) {
 			$new_text = '';
 		if(is_dir(".".$d->path)){
 			
-			$count = $db->count("SELECT id from `". MAI_PREFIX ."files` WHERE `path` LIKE '".$d->path."%' AND `size` > 0");
+            if($d->isdir == 0) { // since 1.0.6 a folder is no longer defined as size = 0
+                // this is just a fix for users who upgrade, a clean install should never get here 
+                $db->query("UPDATE `". MAI_PREFIX ."files` SET `isdir` = '1' WHERE `id` = '$d->id'");
+            }
+            
+			$count = $db->count("SELECT `id` FROM `". MAI_PREFIX ."files` WHERE `path` LIKE '".$d->path."%' AND `isdir` = '0'");
 			
 			$plugins->run_hook("index_folders");
 			

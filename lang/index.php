@@ -84,4 +84,7 @@ $lang["off"] = "Off";
 $lang["back"] = "Back";
 $lang["path"] = "Path";
 $lang["description"] = "Description";
+$lang["remember"] = "Remember Me";
+$lang["tpl_editor"] = "Tpl Editor";
+$lang["tpl_notice"] = "(!) Be careful when you edit the tpl files it can disable the functionality of the site or of your plugins ! So make sure you know what you are doing !";
 

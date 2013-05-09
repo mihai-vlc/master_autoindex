@@ -84,4 +84,7 @@
 	usr_set_top
 	usr_set
 	usr_set_end
-	
+/admincp/tpl_editor.php
+    tpl_editor_top
+    tpl_editor
+    tpl_editor_end

@@ -60,10 +60,11 @@ if(!$db->query("CREATE TABLE IF NOT EXISTS `".$_POST['prefix']."files` (
   `size` int(11) NOT NULL,
   `icon` text NOT NULL,
   `description` text NOT NULL,
+  `isdir` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;"))	$error = 1;
-if(!$db->query("INSERT INTO `".$_POST['prefix']."files` (`id`, `name`, `path`, `indir`, `views`, `dcount`, `time`, `size`, `icon`) VALUES
-(1, 'Games', '/files/Games', 0, 0, 0, 1348259936, 0, '');"))	$error = 1;
+if(!$db->query("INSERT INTO `".$_POST['prefix']."files` (`id`, `name`, `path`, `indir`, `views`, `dcount`, `time`, `size`, `icon`,`isdir`) VALUES
+(1, 'Games', '/files/Games', 0, 0, 0, 1348259936, 0, '', 1);"))	$error = 1;
 if(!$db->query("CREATE TABLE IF NOT EXISTS `".$_POST['prefix']."plugins_settings` (
   `name` varchar(200) NOT NULL,
   `value` text NOT NULL,

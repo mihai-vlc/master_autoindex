@@ -1,7 +1,7 @@
 <?php
 // Master Autoindex
 // ionutvmi@gmail.com 
-// Last Edit: Feb 2013
+// Last Edit: May 2013
 // master-land.net
 
 ob_start();
@@ -18,7 +18,7 @@ if(!is_admin()) {
 $links[] = mai_img("arr.gif")." <a href='index.php'>$lang->admincp </a>";
 $links[] = mai_img("arr.gif")." $lang->plugin_manager";
 
-$plugins->load(true);
+$plugins->load(true); // we don't run plugins here
 $act = $_GET['act'];
 $page = (int)$_GET['page'] == 0 ? 1 : (int)$_GET['page'];
 
@@ -111,16 +111,25 @@ if($act == "uninstall"){
 	$plug = $_GET['plugin'];
 	
 	if($_POST){
-		foreach($_POST as $k => $v){
-			if(is_array($v))
-				$value = $db->escape(serialize($v)); 
-			else 
-				$value = $db->escape($v); 
-			
-			$db->query("UPDATE `".MAI_PREFIX."plugins_settings` SET `value`='$value' WHERE `name` = '".$db->escape($k)."'");
-		}
-
-		$content .= "<div class='green'>$lang->saved </div>";
+        $on_save = true;
+        $fail_message = 'fail'; // use this var to store any error message in _on_save()
+        if(is_callable($plug."_on_save")){
+            $on_save = (bool)call_user_func($plug."_on_save");
+        }
+        
+        if($on_save){
+            foreach($_POST as $k => $v){
+                if(is_array($v))
+                    $value = $db->escape(serialize($v)); 
+                else 
+                    $value = $db->escape($v); 
+                
+                $db->query("UPDATE `".MAI_PREFIX."plugins_settings` SET `value`='$value' WHERE `name` = '".$db->escape($k)."'");
+            }
+        
+            $content .= "<div class='green'>$lang->saved </div>";
+        } else
+            $content .= "<div class='red'>$fail_message </div>";        
 	}
 	
 	

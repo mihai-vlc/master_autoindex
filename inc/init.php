@@ -11,7 +11,11 @@ define("MAI_TPL","tpl/");
 
 $set = new stdClass(); // php 5.4 fix
 
+
 include MAI_ROOT."inc/settings.php";
+// remove the last slash if any in $set->url
+$set->url = rtrim($set->url, "/");
+
 include MAI_ROOT."lib/mysql.class.php";
 include MAI_ROOT."lib/plugin.class.php";
 include MAI_ROOT."lib/template.class.php";
@@ -24,10 +28,12 @@ $lang = (object)$lang;
 $tpl = new Tpl();
 
 // version
-$set->version = '1.0.5';
+$set->version = '1.0.6 BETA';
 
 // db connection
 $db = new dbConn($set->db_host,$set->db_user,$set->db_pass,$set->db_name);
+
+
 $set->sinfo = $db->get_row("SELECT * FROM `". MAI_PREFIX ."settings`");
 
 if(!$set->sinfo){
@@ -36,6 +42,12 @@ if(!$set->sinfo){
 }
 
 
+// check if we have any cookie saved
+if($_COOKIE['pass'] == $set->sinfo->admin_pass)
+    $_SESSION['adminpass'] = $set->sinfo->admin_pass;
+
+
+// get the settings for plugins
 if(!is_array(unserialize($set->sinfo->active_plugins)))
 	$set->sinfo->active_plugins = serialize(array());
 

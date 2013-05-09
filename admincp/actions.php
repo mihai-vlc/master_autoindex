@@ -20,9 +20,11 @@ $links[] = mai_img("arr.gif")." <a href='$set->url/index.php'>$lang->file_manage
 // add
 if($_GET['act'] == 'add') {
 	$file = $db->get_row("SELECT * FROM `". MAI_PREFIX ."files` WHERE `id`='$fid'");
-	if(!$file)
+	if(!$file){
+        $file = new stdClass(); // php 5.4 fix
 		$file->path = "/files";
-	if(!is_dir("..".$file->path)){
+	}
+    if(!is_dir("..".$file->path)){
 		header("Location: $set->url");exit;
 	}
 	
@@ -30,7 +32,7 @@ if($_GET['act'] == 'add') {
 	
 	if($_POST['name']){
 		if($db->count("SELECT `id` FROM `". MAI_PREFIX ."files` WHERE `path` = '".$file->path."/".$_POST['name']."'") == 0) {
-			if($db->insert("INSERT INTO `". MAI_PREFIX ."files` SET `name`='".$db->escape($_POST['name'])."',`path`='".$db->escape($file->path."/".$_POST['name'])."', `icon`='".$db->escape($_POST['icon'])."',`indir`='".(int)$_GET['id']."', `time`='".time()."'")){
+			if($db->insert("INSERT INTO `". MAI_PREFIX ."files` SET `name`='".$db->escape($_POST['name'])."',`path`='".$db->escape($file->path."/".$_POST['name'])."', `icon`='".$db->escape($_POST['icon'])."',`indir`='".(int)$_GET['id']."', `time`='".time()."', `isdir`='1'")){
 				mkdir("..".$file->path."/".$_POST['name'],0777);
 				
 				$plugins->run_hook("admin_actions_add");
@@ -114,26 +116,56 @@ if($_GET['act'] == 'edit') {
 if($_GET['act'] == 'editset') {
 	$plugins->run_hook("admin_actions_editset_top");
 
-	if($_POST['msg']){
-		if(trim($_POST['pass']) != ''){
-			$pass = ", `admin_pass` = '".sha1($_POST['pass'])."'";
-			$_SESSION['adminpass'] = sha1($_POST['pass']);
-			}
-		if($db->query("UPDATE `". MAI_PREFIX ."settings` SET `main_msg`='".$db->escape($_POST['msg'])."' $pass")){
-		$form .= "<div class='green'>$lang->saved</div>";
-		$set->sinfo->main_msg = $_POST['msg']; // to keep it updated
-		$plugins->run_hook("admin_actions_editset");
-		}
-	}
-	$links[] = mai_img("arr.gif")." $lang->settings ";
+    $links[count($links)-1] = mai_img("arr.gif")." <a href='?act=editset'>$lang->settings</a>";
+    
+    if($_GET['sphp']) { // edit settings.php
+        
+        $file = MAI_ROOT."/inc/settings.php";
+        if(!file_exists($file))
+            die("File does not exists !");
+        
+        $links[] = mai_img("arr.gif")." <a href='?act=editset&sphp=1'>$lang->edit settings.php</a>";
+        
+        if($_POST) 
+            if(file_put_contents($file, $_POST['data'])) 
+                $form .= "<div class='green'>$lang->saved</div>";
+            else
+                $form .= "<div class='red'>$lang->error</div>";
+        
+        
+        
+        $form .= "
+            <form action='#' method='post'>
+                <textarea name='data'>".htmlentities(file_get_contents($file))."</textarea><br/>
+                <input type='submit' name='ok' value='$lang->save'>
+            </form>
+        ";        
+            
+        
+    } else {
+        
+        if($_POST['msg']){
+            if(trim($_POST['pass']) != ''){
+                $pass = ", `admin_pass` = '".sha1($_POST['pass'])."'";
+                $_SESSION['adminpass'] = sha1($_POST['pass']);
+                }
+            if($db->query("UPDATE `". MAI_PREFIX ."settings` SET `main_msg`='".$db->escape($_POST['msg'])."' $pass")){
+            $form .= "<div class='green'>$lang->saved</div>";
+            $set->sinfo->main_msg = $_POST['msg']; // to keep it updated
+            $plugins->run_hook("admin_actions_editset");
+            }
+        }
+        
 
-	$form .= "<form action='#' method='post'>
-		$lang->main_msg :<br/> <textarea name='msg'>".htmlentities($set->sinfo->main_msg,ENT_QUOTES)."</textarea><br/>
-		$lang->password ($lang->keep_blank):<br/> <input type='password' name='pass'><br/>
-		<br/>
-		<input type='submit' value='$lang->save'>
-	</form>";
-	$plugins->run_hook("admin_actions_editset_end");
+        $form .= "<form action='#' method='post'>
+            $lang->main_msg :<br/> <textarea name='msg'>".htmlentities($set->sinfo->main_msg,ENT_QUOTES)."</textarea><br/>
+            $lang->password ($lang->keep_blank):<br/> <input type='password' name='pass'><br/>
+            <br/>
+            <input type='submit' value='$lang->save'>
+        </form><br/> 
+        &#187; <a href='?act=editset&sphp=1'>$lang->edit settings.php</a>";
+        $plugins->run_hook("admin_actions_editset_end");
+    }
 }
 //delete
 if($_GET['act'] == 'delete') {
