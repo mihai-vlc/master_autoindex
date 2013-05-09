@@ -2,9 +2,15 @@
 *                   *
 *     ionutvmi      *
 *  MASTER AUTOINDEX *
-*     v 1.0 BETA    *
+*     v 1.0.6 BETA  *
 *                   *
 ********************/
+
+This source may contain some beta features
+if you are looking for the stable release go to 
+
+http://master-land.net/autoindex
+
 
 /*** REQUIREMENTS **/
 PHP5

@@ -1,8 +1,19 @@
+V 1.0.6 - To be released
+- remember me on admincp added
+- error in add new folder fix needed
+- mysql compatibility added
+- fix folder & files display based on sorting (added new column isdir in files table)
+- diable force download use header() instead
+- plugins _on_save() function added
+TODO: - easy install for plugins directly from admincp
+
+----------------------
 V 1.0.5 - 11 Feb 2013
 - fixed php 5.4 object bug
 - if the admin message is blank nothing is shown in the index page
 - pagination in plugin manager added
 - new hooks on index page
+
 ----------------------
 V 1.0.4 - 16 Oct 2012
 - magic quote bug fixed 
