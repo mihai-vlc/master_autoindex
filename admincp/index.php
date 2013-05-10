@@ -38,6 +38,7 @@ if(((sha1($_POST['pass']) == $set->sinfo->admin_pass) && ($_POST['token'] == $_S
 	$tpl->assign('file_manager',$lang->file_manager);
 	$tpl->assign('plugin_manager',$lang->plugin_manager);
 	$tpl->assign('tpl_editor',$lang->tpl_editor);
+	$tpl->assign('plugins_market',$lang->plugins_market);
 	$tpl->assign('upload_files',$lang->upload_files);
 	$tpl->assign('mark',mai_img('arr.gif'));
 	$tpl->assign('version',$set->version);

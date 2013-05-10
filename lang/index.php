@@ -87,4 +87,6 @@ $lang["description"] = "Description";
 $lang["remember"] = "Remember Me";
 $lang["tpl_editor"] = "Tpl Editor";
 $lang["tpl_notice"] = "(!) Be careful when you edit the tpl files it can disable the functionality of the site or of your plugins ! So make sure you know what you are doing !";
+$lang["plugins_market"] = "Plugins Market";
+$lang["plugin_installed"] = "Plugin was installed successfully !<br/> Now go to <a href='./plugin_manager.php'>Plugin Manager</a> and activate it !";
 

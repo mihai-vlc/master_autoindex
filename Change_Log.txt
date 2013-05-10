@@ -5,7 +5,7 @@ V 1.0.6 - To be released
 - fix folder & files display based on sorting (added new column isdir in files table)
 - diable force download use header() instead
 - plugins _on_save() function added
-TODO: - easy install for plugins directly from admincp
+- easy install for plugins directly from admincp added
 
 ----------------------
 V 1.0.5 - 11 Feb 2013
